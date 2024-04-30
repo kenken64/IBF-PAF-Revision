@@ -5,7 +5,7 @@ CREATE TABLE `rsvp` (
   `phone` varchar(60) DEFAULT NULL,
   `confirmation_date` date DEFAULT NULL,
   `comment` mediumtext,
-  'food_type' VARCHAR(45) NULL,
+  `food_type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `id_UNIQUE` (`id`)
