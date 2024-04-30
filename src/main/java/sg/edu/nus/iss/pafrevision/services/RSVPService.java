@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sg.edu.nus.iss.pafrevision.models.AggregateRSVP;
 import sg.edu.nus.iss.pafrevision.models.RSVP;
 import sg.edu.nus.iss.pafrevision.repositories.RSVPRepository;
 
@@ -31,5 +32,9 @@ public class RSVPService {
 
     public int getTotalRSVP(){
         return rsvpRepository.getTotalRSVP();
+    }
+
+    public List<AggregateRSVP> aggregateRSVPByFoodType(){
+        return rsvpRepository.aggregateRSVPByFoodType();
     }
 }
