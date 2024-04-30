@@ -17,4 +17,19 @@ public interface Queries {
         INSERT INTO rsvp (full_name, email, phone, confirmation_date, comment, food_type) 
         VALUES (?, ?, ?, ?, ?, ?) 
     """;
+
+    public static final String SQL_UPDATE_RSVP = """
+        UPDATE rsvp SET full_name = ?, email = ?, phone = ?, confirmation_date = ?, comment = ?, food_type = ? 
+        WHERE email = ?
+    """;
+
+    public static final String SQL_TOTAL_CNT_RSVP = """
+        SELECT COUNT(*) as total FROM rsvp
+            """;
+
+    public static final String SQL_SEARCH_RSVP_BY_EMAIL="""
+        SELECT id, full_name, email, phone,
+        DATE_FORMAT(confirmation_date, \"%d/%m/%Y\") as confirmation_date,
+        comment, food_type FROM rsvp WHERE email = ?
+            """;
 }
