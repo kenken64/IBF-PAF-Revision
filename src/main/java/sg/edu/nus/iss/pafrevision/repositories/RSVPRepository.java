@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -30,6 +31,10 @@ import static sg.edu.nus.iss.pafrevision.repositories.RSVPQueries.*;
 
 @Repository
 public class RSVPRepository {
+
+    @Value("${revision.rest.endpoint}")
+    private String restAPIendpoint;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -126,7 +131,7 @@ public class RSVPRepository {
 
     public List<AggregateRSVP> aggregateRSVPByFoodType(){
         List<AggregateRSVP> aggregateRSVPs = new LinkedList<>();
-        
+        System.out.println("+++++++++" + restAPIendpoint);
         GroupOperation grpByFoodTypeOpr = Aggregation
                     .group("foodType")
                     .push("foodType").as("foodType")
