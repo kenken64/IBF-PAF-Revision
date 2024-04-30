@@ -88,7 +88,7 @@ public class RSVP {
     public static RSVP create(SqlRowSet rs){
         RSVP rsvp = new RSVP();
         rsvp.setId(rs.getInt("id"));
-        rsvp.setName(rs.getString("name"));
+        rsvp.setName(rs.getString("full_name"));
         rsvp.setEmail(rs.getString("email"));
         rsvp.setPhone(rs.getString("phone"));
 
@@ -97,7 +97,7 @@ public class RSVP {
         rsvp.setConfirmationDate(new DateTime(
             DateTimeFormat.forPattern("dd/MM/yyyy")
             .parseDateTime(rs.getString("confirmation_date"))));
-        rsvp.setComments(rs.getString("comments"));
+        rsvp.setComments(rs.getString("comment"));
         rsvp.setFoodType(rs.getString("food_type"));
         return rsvp;
     }
@@ -112,7 +112,7 @@ public class RSVP {
         //-> parse using Instant -> set to your pojo/object
         rsvp.setConfirmationDate(new DateTime(
             Instant.parse(readObject.getString("confirmation_date"))));
-        rsvp.setComments(readObject.getString("comments"));
+        rsvp.setComments(readObject.getString("comment"));
         rsvp.setFoodType(readObject.getString("food_type"));
         return rsvp;
     }
@@ -126,7 +126,7 @@ public class RSVP {
             .add("phone", phone)
             .add("confirmation_date", 
                 confirmationDate != null ? confirmationDate.toString() : "")
-            .add("comments", comments)
+            .add("comment", comments)
             .add("food_type", foodType)
             .build();
     }
