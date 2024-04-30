@@ -86,7 +86,7 @@ public class RSVPRepository {
             rsvp.setId(primaryKeyVal.intValue());
             if(rsvp.getId() > 0){
                 rsvp.setConfirmationDate(null);
-                mongoTemplate.save(rsvp);
+                mongoTemplate.save(rsvp, "rsvp");
             }
         }catch(DataIntegrityViolationException e){
             RSVP existingRSVP = searchRSVPbyEmail(rsvp.getEmail());
@@ -110,7 +110,7 @@ public class RSVPRepository {
             rsvp.getComments(), rsvp.getFoodType(), rsvp.getEmail());
         if(rows > 0){
             rsvp.setConfirmationDate(null);
-            mongoTemplate.save(rsvp);
+            mongoTemplate.save(rsvp, "rsvp");
             return true;
         }
         return false;
